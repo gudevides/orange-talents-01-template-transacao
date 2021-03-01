@@ -8,5 +8,5 @@ public interface TransacaoRepository extends JpaRepository<Transacao,Long> {
 
     List<Transacao> findByCartaoId(Long id);
 
-    List<Transacao> findTop10ByCartaoNumeroOrderByEfetivadaEmAsc(String id);
+    List<Transacao> findTop10ByCartaoNumeroOrderByEfetivadaEmDesc(String id);
 }

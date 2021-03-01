@@ -22,7 +22,7 @@ public class ConsultarComprasController {
     @GetMapping("/cartoes/{id}")
     public ResponseEntity<List<TransacaoResponse>> consultar(@PathVariable @NotBlank String id){
 
-        List<Transacao> transacoes = transacaoRepository.findTop10ByCartaoNumeroOrderByEfetivadaEmAsc(id);
+        List<Transacao> transacoes = transacaoRepository.findTop10ByCartaoNumeroOrderByEfetivadaEmDesc(id);
 
         if (transacoes.isEmpty()){
             return ResponseEntity.notFound().build();
