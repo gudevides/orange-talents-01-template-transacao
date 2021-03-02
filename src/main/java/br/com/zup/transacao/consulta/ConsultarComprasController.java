@@ -5,7 +5,7 @@ import br.com.zup.transacao.transacao.Transacao;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,9 +20,9 @@ public class ConsultarComprasController {
     }
 
     @GetMapping("/cartoes/{id}")
-    public ResponseEntity<List<TransacaoResponse>> consultar(@PathVariable @NotBlank String id){
+    public ResponseEntity<List<TransacaoResponse>> consultar(@PathVariable @NotNull Long id){
 
-        List<Transacao> transacoes = transacaoRepository.findTop10ByCartaoNumeroOrderByEfetivadaEmDesc(id);
+        List<Transacao> transacoes = transacaoRepository.findTop10ByCartaoIdOrderByEfetivadaEmDesc(id);
 
         if (transacoes.isEmpty()){
             return ResponseEntity.notFound().build();

@@ -6,6 +6,7 @@ import br.com.zup.transacao.transacao.Transacao;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 public class EventoDeTransacao {
 
@@ -42,6 +43,11 @@ public class EventoDeTransacao {
     public Transacao toModel() {
         Estabelecimento estabelecimento = new Estabelecimento(this.estabelecimento);
         Cartao cartao = new Cartao(this.cartao);
+        return new Transacao(this.id, this.valor, estabelecimento, cartao, this.efetivadaEm);
+    }
+
+    public Transacao toModelWithCard(Cartao cartao) {
+        Estabelecimento estabelecimento = new Estabelecimento(this.estabelecimento);
         return new Transacao(this.id, this.valor, estabelecimento, cartao, this.efetivadaEm);
     }
 }
